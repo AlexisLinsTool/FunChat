@@ -30,6 +30,7 @@ class MineFragment : BaseFragment(), View.OnClickListener {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v = inflater.inflate(R.layout.fragment_mine, container, false)
+        val mine_user_icon:ImageView = v.findViewById(R.id.mine_user_icon)
         mine_user_icon.setOnClickListener{navigation(JumpConfig.URT_ACTIVITY_LOGIN)}
         return v
     }

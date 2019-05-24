@@ -4,6 +4,7 @@ import android.os.Bundle
 
 import com.alibaba.android.arouter.launcher.ARouter
 import androidx.appcompat.app.AppCompatActivity
+import com.alexis.funchat.storage.MyDatabase
 
 
 /**
@@ -14,10 +15,12 @@ import androidx.appcompat.app.AppCompatActivity
  */
 abstract class BaseActivity : AppCompatActivity() {
     protected lateinit var mRouter: ARouter
+    protected lateinit var mDatabase:MyDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mRouter = ARouter.getInstance()
+        mDatabase = MyDatabase.getInstance(this)
     }
 
     fun navigation(path: String) {

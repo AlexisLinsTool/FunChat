@@ -29,7 +29,7 @@ interface UserDao {
      * @return UserEntity
      */
     @Query("SELECT * FROM USER WHERE account =:account AND password =:password LIMIT 1")
-    fun findOneByAccountAndPassword(account: String, password: String): UserEntity
+    fun findOneByAccountAndPassword(account: String, password: String): UserEntity?
 
     /**
      * 获取所有用户（联系人）

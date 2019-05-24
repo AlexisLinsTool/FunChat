@@ -1,6 +1,7 @@
 package com.alexis.funchat.app
 
 import android.app.Application
+import android.content.Context
 
 import com.alexis.funchat.BuildConfig
 import com.alibaba.android.arouter.launcher.ARouter
@@ -31,12 +32,15 @@ class MyApplication : Application() {
         ARouter.getInstance().destroy()
     }
 
-    companion object{
+    companion object {
+        var userAccount: String = ""
+        var mContext: Application? = null
+        fun getContext(): Context {
+            return mContext!!
+        }
+
         private val TAG = MyApplication::class.java.simpleName
     }
 
-    object obj{
-        val userName:String = ""
-    }
 }
 
