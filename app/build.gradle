@@ -1,5 +1,9 @@
 apply plugin: 'com.android.application'
 
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -34,6 +38,11 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    //kotlin
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation"org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation"org.jetbrains.anko:anko-common:$anko_version"
     //兼容包
     implementation 'androidx.appcompat:appcompat:1.1.0-alpha05'
     //材料设计

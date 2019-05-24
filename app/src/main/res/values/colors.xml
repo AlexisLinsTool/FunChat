@@ -28,4 +28,22 @@
     <color name="red_a200">#FFff5177</color>
     <color name="red_a400">#FFff2d6f</color>
     <color name="red_a700">#FFe00032</color>
+
+
+    <color name="gray_100">#FFffffff</color>
+    <color name="gray_150">#FFeeeeee</color>
+    <color name="gray_200">#FFdddddd</color>
+    <color name="gray_250">#FFcccccc</color>
+    <color name="gray_300">#FFbbbbbb</color>
+    <color name="gray_350">#FFaaaaaa</color>
+    <color name="gray_400">#FF999999</color>
+    <color name="gray_450">#FF888888</color>
+    <color name="gray_500">#FF777777</color>
+    <color name="gray_550">#FF666666</color>
+    <color name="gray_600">#FF555555</color>
+    <color name="gray_650">#FF444444</color>
+    <color name="gray_700">#FF333333</color>
+    <color name="gray_750">#FF222222</color>
+    <color name="gray_800">#FF111111</color>
+    <color name="gray_850">#FF000000</color>
 </resources>
