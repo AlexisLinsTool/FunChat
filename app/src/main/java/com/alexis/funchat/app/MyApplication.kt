@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 
 import com.alexis.funchat.BuildConfig
+import com.alexis.funchat.storage.MyDatabase
 import com.alibaba.android.arouter.launcher.ARouter
 
 
@@ -25,6 +26,7 @@ class MyApplication : Application() {
             ARouter.openDebug()
         }
         ARouter.init(this)
+        MyDatabase.initializa(this)
     }
 
     override fun onTerminate() {

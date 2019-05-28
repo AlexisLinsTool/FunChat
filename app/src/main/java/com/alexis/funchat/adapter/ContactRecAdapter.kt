@@ -17,7 +17,9 @@ import com.alexis.funchat.storage.entity.UserEntity
  * @author Alexis
  * @date 2019/5/14  11:00
  */
-class ContactRecAdapter constructor(listData:List<UserEntity>) : RecyclerView.Adapter<ContactRecAdapter.ViewHolder>()  {
+class ContactRecAdapter(listData: List<UserEntity>?) : RecyclerView.Adapter<ContactRecAdapter.ViewHolder>()  {
+
+    var listData: List<UserEntity>? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.list_contact_item, parent, false)
@@ -29,7 +31,7 @@ class ContactRecAdapter constructor(listData:List<UserEntity>) : RecyclerView.Ad
     }
 
     override fun getItemCount(): Int {
-        return 0
+        return listData?.size ?: 0
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

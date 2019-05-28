@@ -7,8 +7,10 @@ import android.widget.Toast
 import com.alexis.funchat.R
 import com.alexis.funchat.app.MyApplication
 import com.alexis.funchat.base.BaseActivity
+import com.alexis.funchat.storage.MyDatabase
 import com.alexis.funchat.storage.entity.UserEntity
 import com.alexis.funchat.util.JumpConfig
+import com.alexis.funchat.util.LogUtil
 import com.alibaba.android.arouter.facade.annotation.Route
 import kotlinx.android.synthetic.main.activity_register_layout.*
 
@@ -26,6 +28,8 @@ class RegisterActivity : BaseActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register_layout)
         mRouter.inject(this)
+        MyDatabase.initializa(this)
+        mDatabase = MyDatabase.getInstance()
         initView()
     }
 
@@ -34,20 +38,21 @@ class RegisterActivity : BaseActivity(), View.OnClickListener {
     }
 
     private fun jump2Login() {
+        LogUtil.d(TAG,"jump2Login")
         val account:String = register_account.text.toString()
         val password:String = register_password.text.toString()
         val rePassword:String = register_re_password.text.toString()
         if (account.isEmpty()){
-            Toast.makeText(this.applicationContext,"账号为空",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this.applicationContext,getString(R.string.error_empty_account),Toast.LENGTH_SHORT).show()
             return
         }else if(password.isEmpty()||rePassword.isEmpty()){
-            Toast.makeText(this.applicationContext,"密码为空",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this.applicationContext,getString(R.string.error_empty_password),Toast.LENGTH_SHORT).show()
             return
         }else if(password!=rePassword){
-            Toast.makeText(this.applicationContext,"两次输入密码不一致",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this.applicationContext,getString(R.string.error_repassword_not_macth_passwoord),Toast.LENGTH_SHORT).show()
             return
         }
-        var mUserEntity: UserEntity = UserEntity()
+        val mUserEntity: UserEntity = UserEntity()
         mUserEntity.account = account
         mUserEntity.password = password
         mDatabase.getUserDao().addOne(mUserEntity)

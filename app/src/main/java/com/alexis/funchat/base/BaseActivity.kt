@@ -20,7 +20,6 @@ abstract class BaseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mRouter = ARouter.getInstance()
-        mDatabase = MyDatabase.getInstance(this)
     }
 
     fun navigation(path: String) {

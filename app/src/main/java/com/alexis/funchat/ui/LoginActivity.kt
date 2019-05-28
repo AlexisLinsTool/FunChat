@@ -7,6 +7,7 @@ import android.widget.Toast
 import com.alexis.funchat.R
 import com.alexis.funchat.app.MyApplication
 import com.alexis.funchat.base.BaseActivity
+import com.alexis.funchat.storage.MyDatabase
 import com.alexis.funchat.storage.entity.UserEntity
 import com.alexis.funchat.util.JumpConfig
 import com.alibaba.android.arouter.facade.annotation.Route
@@ -26,13 +27,16 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_layout)
         mRouter.inject(this::class.java)
+        MyDatabase.initializa(this)
+        mDatabase = MyDatabase.getInstance()
     }
 
 
     override fun onRestart() {
         super.onRestart()
-        if (MyApplication.userAccount.isEmpty())
+        if (MyApplication.userAccount.isEmpty()) {
             return
+        }
         login_account.setText(MyApplication.userAccount)
     }
 
@@ -40,21 +44,21 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
         val account: String = login_account.text.toString()
         val password: String = login_password.text.toString()
         if (account.isEmpty()) {
-            Toast.makeText(this.applicationContext, "账号为空", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this.applicationContext, getString(R.string.error_empty_account), Toast.LENGTH_SHORT).show()
             return
         } else if (password.isEmpty()) {
-            Toast.makeText(this.applicationContext, "密码为空", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this.applicationContext, getString(R.string.error_empty_password), Toast.LENGTH_SHORT).show()
             return
         }
         val userEntity: UserEntity? = mDatabase.getUserDao().findOneByAccountAndPassword(account, password)
         if (userEntity == null) {
-            Toast.makeText(this.applicationContext, "账号或密码错误", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this.applicationContext, getString(R.string.error_wrong_account_or_password), Toast.LENGTH_SHORT).show()
             return
         }
         navigation(JumpConfig.URI_ACTIVITY_MAIN)
     }
 
-    fun jump2Register() {
+    private fun jump2Register() {
         navigation(JumpConfig.URT_ACTIVITY_REGISTER)
     }
 

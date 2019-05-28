@@ -2,8 +2,6 @@ package com.alexis.funchat.ui
 
 import androidx.collection.SparseArrayCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 
 import android.os.Build
 import android.os.Bundle
@@ -12,8 +10,10 @@ import android.view.MenuItem
 import com.alexis.funchat.R
 import com.alexis.funchat.base.BaseActivity
 import com.alexis.funchat.util.JumpConfig
+import com.alexis.funchat.util.LogUtil
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.android.synthetic.main.activity_main.*
 
 /**
  * Class description:
@@ -27,6 +27,7 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
     private var mFragmentHolder: SparseArrayCompat<Fragment>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        LogUtil.d(TAG,"onCreate")
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             super.onCreate(savedInstanceState)
         }
@@ -41,10 +42,8 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
     private fun initView() {
         //        showNavigationIcon(false);
         mFragmentHolder = SparseArrayCompat()
-
-        val navView = findViewById<BottomNavigationView>(R.id.nav_view)
-        navView.setOnNavigationItemSelectedListener(this)
-        selectFragment(navView.selectedItemId)
+        main_nav.setOnNavigationItemSelectedListener(this)
+        selectFragment(main_nav.selectedItemId)
     }
 
 
@@ -95,5 +94,9 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
             R.id.navigation_user -> MineFragment.instance
             else -> MineFragment.instance
         }
+    }
+
+    companion object{
+        val TAG:String = MainActivity::class.java.simpleName
     }
 }
