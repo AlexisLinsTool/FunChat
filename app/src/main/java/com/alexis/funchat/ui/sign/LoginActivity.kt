@@ -1,4 +1,4 @@
-package com.alexis.funchat.ui
+package com.alexis.funchat.ui.sign
 
 import android.os.Bundle
 import android.view.View
@@ -7,7 +7,7 @@ import android.widget.Toast
 import com.alexis.funchat.R
 import com.alexis.funchat.app.MyApplication
 import com.alexis.funchat.base.BaseActivity
-import com.alexis.funchat.storage.MyDatabase
+import com.alexis.funchat.storage.AbstractDatabase
 import com.alexis.funchat.storage.entity.UserEntity
 import com.alexis.funchat.util.JumpConfig
 import com.alibaba.android.arouter.facade.annotation.Route
@@ -27,8 +27,7 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_layout)
         mRouter.inject(this::class.java)
-        MyDatabase.initializa(this)
-        mDatabase = MyDatabase.getInstance()
+        mDatabase = AbstractDatabase.getInstance()
     }
 
 
@@ -50,7 +49,7 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
             Toast.makeText(this.applicationContext, getString(R.string.error_empty_password), Toast.LENGTH_SHORT).show()
             return
         }
-        val userEntity: UserEntity? = mDatabase.getUserDao().findOneByAccountAndPassword(account, password)
+        val userEntity: UserEntity? = mDatabase.userDao.findOneByAccountAndPassword(account, password)
         if (userEntity == null) {
             Toast.makeText(this.applicationContext, getString(R.string.error_wrong_account_or_password), Toast.LENGTH_SHORT).show()
             return

@@ -1,4 +1,4 @@
-package com.alexis.funchat.ui
+package com.alexis.funchat.ui.home
 
 import androidx.collection.SparseArrayCompat
 import androidx.fragment.app.Fragment
@@ -9,11 +9,20 @@ import android.view.MenuItem
 
 import com.alexis.funchat.R
 import com.alexis.funchat.base.BaseActivity
+import com.alexis.funchat.ui.home.fragment.ContactFragment
+import com.alexis.funchat.ui.home.fragment.MineFragment
+import com.alexis.funchat.ui.home.fragment.NewsFragment
 import com.alexis.funchat.util.JumpConfig
 import com.alexis.funchat.util.LogUtil
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
+import androidx.viewpager.widget.ViewPager
+import com.alexis.funchat.base.BaseFragment
+
+
+
+
 
 /**
  * Class description:
@@ -40,10 +49,11 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
      * 初始化组件
      */
     private fun initView() {
-        //        showNavigationIcon(false);
         mFragmentHolder = SparseArrayCompat()
         main_nav.setOnNavigationItemSelectedListener(this)
+
         selectFragment(main_nav.selectedItemId)
+
     }
 
 
@@ -61,7 +71,7 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
         val manager = supportFragmentManager
         val transaction = manager.beginTransaction()
         val fragment = getFragment(id)
-        transaction.replace(R.id.home_frag, fragment, id.toString())
+        transaction.replace(R.id.main_frag, fragment, id.toString())
         transaction.commitAllowingStateLoss()
     }
 
@@ -78,7 +88,6 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
             mFragmentHolder!!.put(id, fragment)
         }
         return fragment
-
     }
 
     /**
@@ -91,7 +100,6 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
         return when (id) {
             R.id.navigation_message -> NewsFragment.instance
             R.id.navigation_contact -> ContactFragment.instance
-            R.id.navigation_user -> MineFragment.instance
             else -> MineFragment.instance
         }
     }

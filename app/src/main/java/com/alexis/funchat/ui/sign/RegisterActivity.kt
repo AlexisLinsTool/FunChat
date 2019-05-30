@@ -1,4 +1,4 @@
-package com.alexis.funchat.ui
+package com.alexis.funchat.ui.sign
 
 import android.os.Bundle
 import android.view.View
@@ -7,7 +7,7 @@ import android.widget.Toast
 import com.alexis.funchat.R
 import com.alexis.funchat.app.MyApplication
 import com.alexis.funchat.base.BaseActivity
-import com.alexis.funchat.storage.MyDatabase
+import com.alexis.funchat.storage.AbstractDatabase
 import com.alexis.funchat.storage.entity.UserEntity
 import com.alexis.funchat.util.JumpConfig
 import com.alexis.funchat.util.LogUtil
@@ -28,8 +28,7 @@ class RegisterActivity : BaseActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register_layout)
         mRouter.inject(this)
-        MyDatabase.initializa(this)
-        mDatabase = MyDatabase.getInstance()
+        mDatabase = AbstractDatabase.getInstance()
         initView()
     }
 
@@ -55,7 +54,7 @@ class RegisterActivity : BaseActivity(), View.OnClickListener {
         val mUserEntity: UserEntity = UserEntity()
         mUserEntity.account = account
         mUserEntity.password = password
-        mDatabase.getUserDao().addOne(mUserEntity)
+        mDatabase.userDao.addOne(mUserEntity)
         MyApplication.userAccount = account
         navigation(JumpConfig.URT_ACTIVITY_LOGIN)
     }

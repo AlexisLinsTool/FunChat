@@ -1,4 +1,4 @@
-package com.alexis.funchat.ui
+package com.alexis.funchat.ui.home.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater

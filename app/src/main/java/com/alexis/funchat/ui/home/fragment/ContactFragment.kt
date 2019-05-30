@@ -1,4 +1,4 @@
-package com.alexis.funchat.ui
+package com.alexis.funchat.ui.home.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -34,7 +34,6 @@ class ContactFragment : BaseFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         mView = inflater.inflate(R.layout.fragment_contact, container, false)
-        initRecyclerView()
         return mView
     }
 
@@ -46,7 +45,9 @@ class ContactFragment : BaseFragment() {
 
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {}
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        initRecyclerView()
+    }
 
     companion object {
 

@@ -4,7 +4,7 @@ import android.os.Bundle
 
 import com.alibaba.android.arouter.launcher.ARouter
 import androidx.appcompat.app.AppCompatActivity
-import com.alexis.funchat.storage.MyDatabase
+import com.alexis.funchat.storage.AbstractDatabase
 
 
 /**
@@ -15,7 +15,7 @@ import com.alexis.funchat.storage.MyDatabase
  */
 abstract class BaseActivity : AppCompatActivity() {
     protected lateinit var mRouter: ARouter
-    protected lateinit var mDatabase:MyDatabase
+    protected lateinit var mDatabase: AbstractDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

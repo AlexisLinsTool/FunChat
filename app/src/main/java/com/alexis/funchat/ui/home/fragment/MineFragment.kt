@@ -1,4 +1,4 @@
-package com.alexis.funchat.ui
+package com.alexis.funchat.ui.home.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,7 +10,6 @@ import com.alexis.funchat.R
 import com.alexis.funchat.base.BaseFragment
 import com.alexis.funchat.util.JumpConfig
 import com.alibaba.android.arouter.facade.annotation.Route
-import kotlinx.android.synthetic.main.fragment_mine.*
 
 
 /**
