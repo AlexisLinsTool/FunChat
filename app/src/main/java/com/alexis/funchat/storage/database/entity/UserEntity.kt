@@ -1,4 +1,4 @@
-package com.alexis.funchat.storage.entity
+package com.alexis.funchat.storage.database.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

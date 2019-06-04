@@ -10,9 +10,7 @@ import androidx.annotation.NonNull
  *  @author Alexis
  *  @date   2019/5/24  15:44
  */
-
 class LogUtil {
-
 
     companion object {
         private val TAG: String = LogUtil::class.java.simpleName

@@ -9,6 +9,7 @@
     <color name="divider_color">#FFEEEEEE</color>
 
     <color name="hint_text_color">#03A9F4</color>
+    <color name="icon_tint_color">@color/red_900</color>
 
     <color name="text_color">#FF212121</color>
     <color name="text_color_secondary">#FF757575</color>

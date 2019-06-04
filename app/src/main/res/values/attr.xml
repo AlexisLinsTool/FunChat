@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="RadiusIamgeView">
+        <attr name="radius" format="dimension"/>
+        <attr name="ltRadius" format="dimension"/>
+        <attr name="lbRadius" format="dimension"/>
+        <attr name="rtRadius" format="dimension"/>
+        <attr name="rbRadius" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="ImageTextView">
+        <attr name="android:src"/>
+        <attr name="android:tint"/>
+        <attr name="image_width" format="dimension"/>
+        <attr name="image_height" format="dimension"/>
+        <attr name="android:text"/>
+        <attr name="android:textColor"/>
+        <attr name="isShowIndicator" format="boolean"/>
+    </declare-styleable>
+</resources>

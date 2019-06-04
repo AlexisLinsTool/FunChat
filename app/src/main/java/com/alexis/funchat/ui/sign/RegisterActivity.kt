@@ -7,10 +7,12 @@ import android.widget.Toast
 import com.alexis.funchat.R
 import com.alexis.funchat.app.MyApplication
 import com.alexis.funchat.base.BaseActivity
-import com.alexis.funchat.storage.AbstractDatabase
-import com.alexis.funchat.storage.entity.UserEntity
+import com.alexis.funchat.storage.database.AbstractDatabase
+import com.alexis.funchat.storage.database.entity.UserEntity
 import com.alexis.funchat.util.JumpConfig
 import com.alexis.funchat.util.LogUtil
+import com.alexis.funchat.util.isAccount
+import com.alexis.funchat.util.isHPwd
 import com.alibaba.android.arouter.facade.annotation.Route
 import kotlinx.android.synthetic.main.activity_register_layout.*
 
@@ -44,11 +46,17 @@ class RegisterActivity : BaseActivity(), View.OnClickListener {
         if (account.isEmpty()){
             Toast.makeText(this.applicationContext,getString(R.string.error_empty_account),Toast.LENGTH_SHORT).show()
             return
+        }else if(!account.isAccount()){
+            Toast.makeText(this.applicationContext,getString(R.string.error_wrong_account),Toast.LENGTH_SHORT).show()
+            return
         }else if(password.isEmpty()||rePassword.isEmpty()){
             Toast.makeText(this.applicationContext,getString(R.string.error_empty_password),Toast.LENGTH_SHORT).show()
             return
+        }else if(!password.isHPwd()){
+            Toast.makeText(this.applicationContext,getString(R.string.error_wrong_password),Toast.LENGTH_SHORT).show()
+            return
         }else if(password!=rePassword){
-            Toast.makeText(this.applicationContext,getString(R.string.error_repassword_not_macth_passwoord),Toast.LENGTH_SHORT).show()
+            Toast.makeText(this.applicationContext,getString(R.string.error_re_password_not_match_password),Toast.LENGTH_SHORT).show()
             return
         }
         val mUserEntity: UserEntity = UserEntity()

@@ -7,8 +7,8 @@ import android.widget.Toast
 import com.alexis.funchat.R
 import com.alexis.funchat.app.MyApplication
 import com.alexis.funchat.base.BaseActivity
-import com.alexis.funchat.storage.AbstractDatabase
-import com.alexis.funchat.storage.entity.UserEntity
+import com.alexis.funchat.storage.database.AbstractDatabase
+import com.alexis.funchat.storage.database.entity.UserEntity
 import com.alexis.funchat.util.JumpConfig
 import com.alibaba.android.arouter.facade.annotation.Route
 import kotlinx.android.synthetic.main.activity_login_layout.*

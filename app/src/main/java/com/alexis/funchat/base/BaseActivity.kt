@@ -4,7 +4,7 @@ import android.os.Bundle
 
 import com.alibaba.android.arouter.launcher.ARouter
 import androidx.appcompat.app.AppCompatActivity
-import com.alexis.funchat.storage.AbstractDatabase
+import com.alexis.funchat.storage.database.AbstractDatabase
 
 
 /**

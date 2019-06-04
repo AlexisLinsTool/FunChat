@@ -1,9 +1,9 @@
-package com.alexis.funchat.storage
+package com.alexis.funchat.storage.database
 
 import android.content.Context
 
-import com.alexis.funchat.storage.dao.UserDao
-import com.alexis.funchat.storage.entity.UserEntity
+import com.alexis.funchat.storage.database.dao.UserDao
+import com.alexis.funchat.storage.database.entity.UserEntity
 
 import androidx.room.Room
 import androidx.room.RoomDatabase
@@ -32,7 +32,7 @@ abstract class AbstractDatabase : RoomDatabase() {
 
         fun getInstance(): AbstractDatabase =
                 INSTANCE ?: synchronized(this) {
-                    INSTANCE ?: initializa(MyApplication.getContext()).also { INSTANCE = it }
+                    INSTANCE?: initializa(MyApplication.getContext()).also { INSTANCE = it }
                 }
 
         private fun initializa(context: Context) =

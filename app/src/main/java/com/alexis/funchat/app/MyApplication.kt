@@ -4,7 +4,6 @@ import android.app.Application
 import android.content.Context
 
 import com.alexis.funchat.BuildConfig
-import com.alexis.funchat.storage.AbstractDatabase
 import com.alibaba.android.arouter.launcher.ARouter
 
 

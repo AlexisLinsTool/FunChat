@@ -8,7 +8,7 @@ import android.widget.TextView
 
 import com.alexis.funchat.R
 import androidx.recyclerview.widget.RecyclerView
-import com.alexis.funchat.storage.entity.UserEntity
+import com.alexis.funchat.storage.database.entity.UserEntity
 
 
 /**
